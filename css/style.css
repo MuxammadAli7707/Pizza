@@ -10,6 +10,100 @@ body {
   background-color: #fff;
   min-height: 100vh;
   display: flex;
+  background-image: url(../imgs/photo_2022-03-16_10-13-00.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
   flex-direction: column;
+}
+
+.menu {
+  width: 820px;
+  height: 90vh;
+  margin: auto;
+}
+
+.menu__box {
+  width: 400px;
+  height: 80vh;
+  background-color: #fff;
+  border-radius: 10px;
+  padding-top: 20px;
+  padding-right: 20px;
+  padding-left: 40px;
+  overflow-y: auto;
+}
+
+.menu__title {
+  font-size: 25px;
+  margin-bottom: 45px;
+}
+.menu__list {
+  list-style: none;
+}
+.menu__item {
+  border-radius: 20px;
+  padding: 5px 15px;
+  background-color: #fee4c3;
+  margin-bottom: 40px;
+}
+
+.menu__img {
+  position: relative;
+  top: -30px;
+  left: -40px;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+}
+.menu__desc {
+  padding-top: 15px;
+}
+.menu__name {
+  font-size: 20px;
+}
+.menu__cost {
+  font-size: 25px;
+  font-weight: 900;
+}
+.menu__btn {
+  position: relative;
+  top: 15px;
+  border: none;
+  background-color: #7b4bfe;
+  color: #fff;
+  padding: 5px 25px;
+  border-radius: 10px;
+  font-size: 16px;
+}
+
+.output {
+  width: 400px;
+  position: relative;
+  height: 80vh;
+  overflow-y: auto;
+  background-color: #fff;
+  border-radius: 0 10px 10px 0;
+  padding-top: 20px;
+  padding-right: 20px;
+}
+
+.output__box {
+  padding-left: 40px;
+}
+
+
+.output__bottom {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  border-radius: 0 0 10px 0;
+  background-color: #fee4c3;
+}
+
+.output__item {
+  padding: 15px 30px;
+  font-weight: bold;
+  font-size: 16px;
 }
 
