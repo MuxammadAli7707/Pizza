@@ -18,7 +18,7 @@ body {
 
 .menu {
   width: 820px;
-  height: 90vh;
+  /* height: 90vh; */
   margin: auto;
 }
 
@@ -68,13 +68,20 @@ body {
 .menu__btn {
   position: relative;
   top: 15px;
-  border: none;
+  border: 1px solid #7b4bfe;
   background-color: #7b4bfe;
   color: #fff;
   padding: 5px 25px;
   border-radius: 10px;
   font-size: 16px;
+  transition: all 0.4s ease;
 }
+
+.menu__btn:hover {
+  transition: all 0.4s ease;
+  background-color: #29068a;
+}
+
 
 .output {
   width: 400px;
@@ -91,7 +98,6 @@ body {
   padding-left: 40px;
 }
 
-
 .output__bottom {
   position: absolute;
   left: 0;
@@ -107,3 +113,36 @@ body {
   font-size: 16px;
 }
 
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(transparent, #7b4bfe);
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(transparent, #00c6ff);
+}
+
+
+@media screen and (max-width: 826px) {
+  .menu {
+    width: 100%;
+    padding-top: 50px;
+    padding-right: 10px;
+    padding-left: 10px;
+    flex-direction: column;
+  }
+
+  .menu__box {
+    width: 100%;
+    margin-bottom: 50px;
+  }
+
+  .output {
+    width: 100%;
+  }
+}

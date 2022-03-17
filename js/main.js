@@ -31,25 +31,7 @@ let elArray = [{
 
 const elList = document.querySelector("#list");
 
-for (let i = 0; i < elArray.length; i++) {
-  let elItems = document.createElement("li");
-  elItems.className = "menu__item d-flex"
-  elItems.innerHTML = `
-    <div class="menu__img-box">
-            <img class="menu__img" src="https://quizzical-murdock-fa5953.netlify.app/img/pizza2.jpg" alt="pizza">
-          </div>
-         <div class="menu__desc">
-          <h3 class="menu__name">${elArray[i].name}</h3>
-          <p class="menu__cost">${elArray[i].price}</p>
-          <button class="menu__btn addBtn">Add to Cart</button>
-         </div>
-    `
-  elList.appendChild(elItems);
-}
-
-
 const elOutput = document.querySelector("#output__list");
-const elAddBtn = document.querySelectorAll(".addBtn");
 
 let elSub = document.getElementById("sub");
 let elTax = document.getElementById("tax");
@@ -59,54 +41,101 @@ let sub = 0;
 let tax = 0;
 let total = 0;
 
-
-
-for (let i = 0; i < elAddBtn.length; i++) {
-  elAddBtn[i].addEventListener("click", () => {
-    let li = document.createElement("li");
-
-    li.className = "menu__item d-flex"
-    li.innerHTML = `
+for (let i = 0; i < elArray.length; i++) {
+  let elItems = document.createElement("li");
+  elItems.className = "menu__item d-flex animate__animated animate__fadeInUp"
+  elItems.innerHTML = `
     <div class="menu__img-box">
             <img class="menu__img" src="https://quizzical-murdock-fa5953.netlify.app/img/pizza2.jpg" alt="pizza">
           </div>
          <div class="menu__desc">
           <h3 class="menu__name">${elArray[i].name}</h3>
           <p class="menu__cost">${elArray[i].price}</p>
-          <button id="delBtn" class="menu__btn">Remove order</button>
+          <button class="menu__btn" onclick='addItem(${elArray[i].id})'>Add to Cart</button>
          </div>
-    `
-    elOutput.appendChild(li);
+    `;
+  elList.appendChild(elItems);
+}
 
-    sub += elArray[i].price;
+let newPizzasArr = [];
+function addItem(id) {
+  for (let i = 0; i < elArray.length; i++) {
+    if (id == elArray[i].id) {
+      newPizzasArr.push(elArray[i]);
+    }
+  }
+
+  for (let i = 0; i < newPizzasArr.length; i++) {
+    if (i == newPizzasArr.length - 1) {
+      let li = document.createElement("li");
+      li.className = "menu__item d-flex animate__animated animate__fadeInUp";
+      li.innerHTML = `
+            <div class="menu__img-box">
+              <img class="menu__img" src="https://quizzical-murdock-fa5953.netlify.app/img/pizza2.jpg" alt="pizza">
+            </div>
+           <div class="menu__desc">
+            <h3 class="menu__name">${newPizzasArr[i].name}</h3>
+            <p class="menu__cost">${newPizzasArr[i].price}</p>
+            <button id="delBtn" class="menu__btn" onclick='removeItem(${i})'>Remove order</button>
+           </div>
+    `;
+      sub += newPizzasArr[i].price;
+      elSub.textContent = sub.toFixed(2);
+      tax = sub * 10 / 100;
+      elTax.textContent = tax.toFixed(2);
+      total = (sub + tax);
+      elTotal.textContent = total.toFixed(2);
+
+      elOutput.appendChild(li);
+    }
+  }
+}
+
+
+function removeItem(index) {
+  let newArrRemove = [];
+
+  for (let i = 0; i < newPizzasArr.length; i++) {
+    if (index != i) {
+      newArrRemove.push(newPizzasArr[i]);
+    }
+  }
+
+  newPizzasArr = newArrRemove;
+
+  elOutput.innerHTML = "";
+  sub = 0;
+  tax = 0;
+  total = 0;
+
+  for (let i = 0; i < newPizzasArr.length; i++) {
+    let li = document.createElement("li");
+    li.className = "menu__item d-flex animate__animated animate__fadeInUp";
+    li.innerHTML = `
+          <div class="menu__img-box">
+          <img class="menu__img" src="https://quizzical-murdock-fa5953.netlify.app/img/pizza2.jpg" alt="pizza">
+        </div>
+      <div class="menu__desc">
+        <h3 class="menu__name">${newPizzasArr[i].name}</h3>
+        <p class="menu__cost">${newPizzasArr[i].price}</p>
+        <button id="delBtn" class="menu__btn d-flex" onclick='removeItem(${i})'>Remove order</button>
+      </div>
+    `;
+    sub += newPizzasArr[i].price;
     elSub.textContent = sub.toFixed(2);
-
     tax = sub * 10 / 100;
     elTax.textContent = tax.toFixed(2);
-
     total = (sub + tax);
     elTotal.textContent = total.toFixed(2);
+    elOutput.appendChild(li);
+  }
 
-
-    let elDel = document.querySelectorAll("#delBtn");
-
-    for(let j = 0; j < elDel.length; j++){
-      elDel[j].addEventListener("click", (e) => {
-        e.target.parentElement.parentElement.remove();  
-
-
-        sub -= elArray[i].price;
-        elSub.textContent = sub.toFixed(2);
-        console.log(elSub);
-    
-        tax = s * 10 / 100;
-        elTax.textContent = tax.toFixed(2);
-    
-        total = (s - t);
-        elTotal.textContent = total.toFixed(2);
-      });
-    }
-
-  });
-
+  if(newPizzasArr.length == 0){
+    sub = 0;
+    tax = 0;
+    total = 0;
+    elSub.textContent = sub.toFixed(2);
+    elTax.textContent = tax.toFixed(2);
+    elTotal.textContent = total.toFixed(2);
+  }
 }
