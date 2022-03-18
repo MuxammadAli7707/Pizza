@@ -87,11 +87,15 @@ body {
   width: 400px;
   position: relative;
   height: 80vh;
-  overflow-y: auto;
   background-color: #fff;
   border-radius: 0 10px 10px 0;
   padding-top: 20px;
   padding-right: 20px;
+}
+
+.output__main {
+  height: 70vh;
+  overflow-y: auto;
 }
 
 .output__box {
