@@ -111,6 +111,22 @@ body {
   background-color: #fee4c3;
 }
 
+
+.count {
+  position: absolute;
+  top: -10px;
+  right: 0;
+  width: 36px;
+  height: 36px;
+  color: #fff;
+  background-color: #29068a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  border-radius: 50%;
+}
+
 .output__item {
   padding: 15px 30px;
   font-weight: bold;
