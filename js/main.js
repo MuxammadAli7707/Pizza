@@ -83,7 +83,7 @@ function addCart(cartPizzaArray) {
       return item.id == element.id;
     });
     li = `
-    <li class="menu__item d-flex animate__animated animate__fadeInUp">
+    <li class="menu__item d-flex position-relative">
     <div class="menu__img-box">
             <img class="menu__img" src="https://quizzical-murdock-fa5953.netlify.app/img/pizza2.jpg" alt="pizza">
           </div>
